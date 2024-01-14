@@ -1,0 +1,3 @@
+[submodule "mp3-joiner"]
+	path = mp3-joiner
+	url = https://github.com/hossam1231/mp3-joiner
