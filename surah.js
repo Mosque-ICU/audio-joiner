@@ -39,4 +39,4 @@ async function fetchSurahData(surahNumber, uid) {
 }
 
 // Example usage: Fetch metadata for Surah 1
-fetchSurahData(2, "en.walk");
+fetchSurahData(17, "en.walk");
