@@ -1,5 +1,7 @@
+import { joinAudio } from "./mp3.js";
+
 // Array to store metadata objects
-const surahMetadataArray = [];
+let surahMetadata;
 
 // Function to fetch and process surah data
 async function fetchSurahData(surahNumber, uid) {
@@ -11,7 +13,7 @@ async function fetchSurahData(surahNumber, uid) {
     const surahData = data.data.surahs[surahNumber - 1];
 
     // Create metadata object
-    metadata = {
+    const metadata = {
       number: surahData.number,
       name: surahData.englishName,
       translation: surahData.englishNameTranslation,
@@ -20,14 +22,20 @@ async function fetchSurahData(surahNumber, uid) {
     };
 
     // Add metadata object to the array
-    surahMetadataArray.push(metadata);
+    surahMetadata = metadata;
 
     console.log(`Metadata for Surah ${surahNumber} fetched and added to the array.`);
   } catch (error) {
     console.error("Error fetching surah data:", error);
   }
 
-  console.log(surahMetadataArray);
+  console.log(surahMetadata);
+  console.log("Attempting to join audio");
+  try {
+    joinAudio(surahMetadata.audio);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // Example usage: Fetch metadata for Surah 1
